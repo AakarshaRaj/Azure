@@ -32,7 +32,7 @@ jobs:
           echo "Dependencies installed"
 
       - name: Zip app for deployment
-        run: zip -r ../release.zip .
+        run: zip -r release.zip .
       # cd Azure_test
           
 
