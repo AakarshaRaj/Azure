@@ -7,7 +7,7 @@ name: Build and deploy Python app to Azure Web App - flask-formapp1
 on:
   push:
     branches:
-      - main
+      - test
   workflow_dispatch:
 
 jobs:
@@ -23,18 +23,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'  # use 3.10 for better package compatibility
+          python-version: '3.13'  # use 3.10 for better package compatibility
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r Azure_test/requirements.txt
+          pip install -r requirements.txt
           echo "Dependencies installed"
 
       - name: Zip app for deployment
-        run: |
-          cd Azure_test
-          zip -r ../release.zip .
+        run: zip -r ../release.zip .
+      # cd Azure_test
+          
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
