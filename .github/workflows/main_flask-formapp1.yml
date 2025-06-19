@@ -44,9 +44,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Production'
+    permissions:
+      id-token: write   # Required for Azure login OIDC
+      contents: read    # Required to checkout code
 
     steps:
       - name: Download artifact
